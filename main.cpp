@@ -7,17 +7,9 @@ bool GlobalVars::isEated = false;
 const char GlobalVars::eat = '*';
 long GlobalVars::speed_time = 500;
 int GlobalVars::score = 0;
-//очки скорость карта голова
+//очки скорость карта голова два типа
 int main(){
     setlocale(0, "RUS");
-    //char ch;
-    //while (ch=_getch()) {
-    //    std::cout << (int)ch << std::endl;
-    //}
-    //
-    //ch = _getch();//-32
-    //ch = _getch();//-32
-    //ch = _getch();//-32
     srand(time(0));
     bool repeat = true;
     while (true) {
