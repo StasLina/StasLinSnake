@@ -127,7 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GlobalVars.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MapController.cpp" />
+    <ClCompile Include="SnakeController.cpp" />
     <ClCompile Include="StasLinSnake.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GlobalVars.h" />
+    <ClInclude Include="MapController.h" />
+    <ClInclude Include="SnakeController.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
