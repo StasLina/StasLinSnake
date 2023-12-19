@@ -131,7 +131,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapController.cpp" />
     <ClCompile Include="SnakeController.cpp" />
-    <ClCompile Include="StasLinSnake.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GlobalVars.h" />
