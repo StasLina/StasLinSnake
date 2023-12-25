@@ -6,8 +6,8 @@ SnakeModel::SnakeModel() {
 }
 
 void SnakeModel::Move() {
-  bool isNextEmpty = false;
-  SnakeSegment head = *body_snake.begin();
+  bool is_next_empty = false;
+  SnakeSegment head = *snake_body.begin();
   char smth_elm = false;
   new_pos = head.cur_pos;
   switch (cur_orentation) {
@@ -19,7 +19,7 @@ void SnakeModel::Move() {
       new_pos.y = GlobalVars::y_size - 1;
       smth_elm = map->GetModelIndex(new_pos).data;
     }
-    isNextEmpty |= proverka_empty(smth_elm);
+    is_next_empty |= check_empty(smth_elm);
     break;
   case SnakeModel::left:
     --new_pos.x;
@@ -29,7 +29,7 @@ void SnakeModel::Move() {
       new_pos.x = GlobalVars::x_size - 1;
       smth_elm = map->GetModelIndex(new_pos).data;
     }
-    isNextEmpty |= proverka_empty(smth_elm);
+    is_next_empty |= check_empty(smth_elm);
     break;
   case SnakeModel::top:
     ++new_pos.y;
@@ -39,7 +39,7 @@ void SnakeModel::Move() {
       new_pos.y = 0;
       smth_elm = map->GetModelIndex(new_pos).data;
     }
-    isNextEmpty |= proverka_empty(smth_elm);
+    is_next_empty |= check_empty(smth_elm);
     break;
   case SnakeModel::right:
     ++new_pos.x;
@@ -49,11 +49,11 @@ void SnakeModel::Move() {
       new_pos.x = 0;
       smth_elm = map->GetModelIndex(new_pos).data;
     }
-    isNextEmpty |= proverka_empty(smth_elm);
+    is_next_empty |= check_empty(smth_elm);
     break;
   }
 
-  if (isNextEmpty) {
+  if (is_next_empty) {
     all_move();
   } else {
     GlobalVars::is_game_over = true;
@@ -64,16 +64,16 @@ void SnakeModel::SetMapModel(AbstractModel *smth_model) {
   this->map = smth_model;
 }
 
-bool SnakeModel::proverka_empty(const char &elm) {
-  auto ret_val = (GlobalVars::proverka_empty(elm));
+bool SnakeModel::check_empty(const char &elm) {
+  auto ret_val = (GlobalVars::check_empty(elm));
   is_eat = (elm == GlobalVars::eat);
   return ret_val;
 }
 
 void SnakeModel::all_move() {
-  SnakeModel::SnakeSegment last = body_snake.back();
+  SnakeModel::SnakeSegment last = snake_body.back();
   last.cur_pos = new_pos;
-  body_snake.push_front(last);
+  snake_body.push_front(last);
 
   if (is_eat) {
     ++score;
@@ -87,7 +87,7 @@ void SnakeModel::all_move() {
     }
     is_eat = false;
   } else {
-    body_snake.pop_back();
+    snake_body.pop_back();
   }
 }
 

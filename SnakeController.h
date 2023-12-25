@@ -24,7 +24,7 @@ public:
   void SetMapModel(AbstractModel *smth_model);
   const ModelIndex &GetModelIndex(short const &pos_x,
                                   const short &) override {
-    auto smth_seg = body_snake.begin();
+    auto smth_seg = snake_body.begin();
 
     for (short cur_offset_elm = 0; cur_offset_elm != pos_x; ++cur_offset_elm, ++smth_seg)
       ;
@@ -32,7 +32,7 @@ public:
   };
   void SetModelIndex(const ModelIndex &smth_index, const short &pos_x,
                      const short &) override {
-    auto smth_seg = body_snake.begin();
+    auto smth_seg = snake_body.begin();
 
     for (short cur_offset_elm = 0; cur_offset_elm != pos_x;
          ++cur_offset_elm) {
@@ -40,19 +40,19 @@ public:
     }
     smth_seg->data = smth_index;
   };
-  unsigned short GetXSize() override { return body_snake.size(); }
+  unsigned short GetXSize() override { return snake_body.size(); }
   void SetModelSize(unsigned short x, unsigned short) override {
-    body_snake.resize(x);
+    snake_body.resize(x);
   };
   void SetPosition(const short &pos_x, const pos &smth_pos) {
-    auto smth_seg = body_snake.begin();
+    auto smth_seg = snake_body.begin();
 
     for (short cur_offset_elm = 0; cur_offset_elm != pos_x; ++cur_offset_elm, ++smth_seg)
       ;
     smth_seg->cur_pos = smth_pos;
   };
   const SnakeSegment &GetModelSegment(const short &pos_x) {
-    auto smth_seg = body_snake.begin();
+    auto smth_seg = snake_body.begin();
 
     for (short cur_offset_elm = 0; cur_offset_elm != pos_x; ++cur_offset_elm, ++smth_seg)
       ;
@@ -61,13 +61,13 @@ public:
   size_t GetScore() { return score; }
 
 private:
-  std::list<SnakeSegment> body_snake;
+  std::list<SnakeSegment> snake_body;
   AbstractModel *map;
   bool is_eat = false;
   pos new_pos;
   size_t score = 0;
 
-  bool proverka_empty(const char &elm);
+  bool check_empty(const char &elm);
 
   void all_move();
 };
@@ -85,7 +85,7 @@ public:
   SnakeModel *GetModel() { return model; };
   bool isLife() { return !snake_die; }
   void SetDie() { snake_die = true; }
-
+                                                                                                                  
 private:
   SnakeModel *model;
   SnakeModel::orentation new_oren;

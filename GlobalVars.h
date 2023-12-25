@@ -21,7 +21,7 @@ public:
   static const char eat;
   static long time_of_update_speed;
   static int score;
-  static bool proverka_empty(const char &elm, bool set_eat = true) {
+  static bool check_empty(const char &elm, bool set_eat = true) {
     switch (elm) {
     case ' ':
       return true;

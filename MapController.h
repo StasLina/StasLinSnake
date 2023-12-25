@@ -174,7 +174,7 @@ private:
       ++needed_char;
     }
 
-    if (GlobalVars::proverka_empty(*needed_char, false) == false) {
+    if (GlobalVars::check_empty(*needed_char, false) == false) {
       GlobalVars::is_game_over = true;
       *needed_char = 'G';
       smth_cnake->SetDie();
@@ -205,7 +205,7 @@ private:
         ++needed_char;
       }
 
-      if (GlobalVars::proverka_empty(*needed_char, false) == false) {
+      if (GlobalVars::check_empty(*needed_char, false) == false) {
         GlobalVars::is_game_over = true;
         smth_cnake->SetDie();
         *needed_char = 'G';
