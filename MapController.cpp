@@ -10,7 +10,7 @@ void MapController::Move() {
   while (smth_snake != smth_snake_end) {
     (*smth_snake)->Move();
 
-    if (GlobalVars::isEated) {
+    if (GlobalVars::is_eated) {
       //++GlobalVars::score;
       auto snake_model = (*smth_snake)->GetModel();
       auto segment = snake_model->GetModelSegment(0);
@@ -41,7 +41,7 @@ void MapController::Draw() {
   // block_draw.lock();
   system("cls");
 
-  if (GlobalVars::isGameOver) {
+  if (GlobalVars::is_game_over) {
     std::cout << "Game Oveeeerrrrr press r to restart" << std::endl;
     return;
   }
@@ -52,10 +52,10 @@ void MapController::Draw() {
   char fill_top = '$';
   char fill_char = '$';
 
-  for (int j = 0; j != my_indent.top; ++j) {
+  for (int cur_row_indent = 0; cur_row_indent != my_indent.top; ++cur_row_indent) {
     res_map_str = "";
 
-    for (int i = 0; i != my_indent.left - 1; ++i) {
+    for (int cur_col_indent = 0; cur_col_indent != my_indent.left - 1; ++cur_col_indent) {
       res_map_str += fill_char;
     }
     res_map_str += '$';
@@ -66,11 +66,11 @@ void MapController::Draw() {
     }
     res_map_str += '$';
 
-    for (int i = 1; i != my_indent.right; ++i) {
+    for (int cur_col_indent = 1; cur_col_indent != my_indent.right; ++cur_col_indent) {
       res_map_str += fill_char;
     }
     std::string str_score =
-     "\speed: " + std::to_string(GlobalVars::speed_time);
+     "\speed: " + std::to_string(GlobalVars::time_of_update_speed);
     res_map_str += str_score;
     //++score_snake;
     res_map.push_back(res_map_str);
@@ -81,7 +81,7 @@ void MapController::Draw() {
   for (short cur_row = 0; cur_row != GlobalVars::y_size; ++cur_row) {
     res_map_str = "";
 
-    for (int i = 0; i != my_indent.left - 1; ++i) {
+    for (int cur_col_indent = 0; cur_col_indent != my_indent.left - 1; ++cur_col_indent) {
       res_map_str += fill_char;
     }
     res_map_str += '$';
@@ -93,7 +93,7 @@ void MapController::Draw() {
     }
     res_map_str += '$';
 
-    for (int i = 1; i != my_indent.right; i++) {
+    for (int cur_col_indent = 1; cur_col_indent != my_indent.right; cur_col_indent++) {
       res_map_str += fill_char;
     }
 
@@ -113,10 +113,10 @@ void MapController::Draw() {
   }
   // indent bot
 
-  for (int j = 0; j != my_indent.bot; j++) {
+  for (int cur_row_indent = 0; cur_row_indent != my_indent.bot; cur_row_indent++) {
     res_map_str = "";
 
-    for (int i = 0; i != my_indent.left - 1; i++) {
+    for (int cur_col_indent = 0; cur_col_indent != my_indent.left - 1; cur_col_indent++) {
       res_map_str += fill_char;
     }
     res_map_str += '$';
@@ -127,7 +127,7 @@ void MapController::Draw() {
     }
     res_map_str += '$';
 
-    for (int i = 1; i != my_indent.right; i++) {
+    for (int cur_col_indent = 1; cur_col_indent != my_indent.right; cur_col_indent++) {
       res_map_str += fill_char;
     }
     res_map.push_back(res_map_str);
@@ -140,7 +140,7 @@ void MapController::Draw() {
   std::list<std::string>::iterator smth_row_end = res_map.end();
   // auto
 
-  for (short i = 0; i != my_indent.top; ++i, ++smth_row)
+  for (short cur_row_indent = 0; cur_row_indent != my_indent.top; ++cur_row_indent, ++smth_row)
     ;
 
   // draw snake
@@ -155,7 +155,7 @@ void MapController::Draw() {
   smth_row = res_map.begin();
   smth_row_end = res_map.end();
 
-  if (GlobalVars::isGameOver) {
+  if (GlobalVars::is_game_over) {
     smth_snake = list_snakes.begin();
 
     while (smth_snake != smth_snake_end) {

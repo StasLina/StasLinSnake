@@ -76,7 +76,7 @@ public:
     smth_snake = *temp++;
     char ch;
 
-    while (GlobalVars::isGameOver == false) {
+    while (GlobalVars::is_game_over == false) {
       ch = _getch();
       switch (ch) {
       case 'w':
@@ -131,12 +131,12 @@ public:
 
 private:
   void time_move() {
-    while (GlobalVars::isGameOver == false) {
+    while (GlobalVars::is_game_over == false) {
       this->Move();
       Draw();
-      GlobalVars::isEated = false;
+      GlobalVars::is_eated = false;
       std::this_thread::sleep_for(
-       std::chrono::milliseconds(GlobalVars::speed_time));
+       std::chrono::milliseconds(GlobalVars::time_of_update_speed));
     }
   }
 
@@ -149,10 +149,10 @@ private:
     std::list<std::string>::iterator smth_row_end = res_map.end();
     // auto
 
-    for (short i = 0; i != my_indent.top; ++i, ++smth_row)
+    for (short cur_row_indent = 0; cur_row_indent != my_indent.top; ++cur_row_indent, ++smth_row)
       ;
-    unsigned short i = 0;
-    auto segment = smth_model->GetModelSegment(i);
+    unsigned short cur_row_indent = 0;
+    auto segment = smth_model->GetModelSegment(cur_row_indent);
     short cur_x = 0;
     short cur_y = 0;
     auto nedded_row = smth_row;
@@ -175,15 +175,15 @@ private:
     }
 
     if (GlobalVars::proverka_empty(*needed_char, false) == false) {
-      GlobalVars::isGameOver = true;
+      GlobalVars::is_game_over = true;
       *needed_char = 'G';
       smth_cnake->SetDie();
     } else {
       *needed_char = '#';
     }
 
-    for (i = 1; i != x_size; ++i) {
-      auto segment = smth_model->GetModelSegment(i);
+    for (cur_row_indent = 1; cur_row_indent != x_size; ++cur_row_indent) {
+      auto segment = smth_model->GetModelSegment(cur_row_indent);
       short cur_x = 0;
       short cur_y = 0;
       auto nedded_row = smth_row;
@@ -206,7 +206,7 @@ private:
       }
 
       if (GlobalVars::proverka_empty(*needed_char, false) == false) {
-        GlobalVars::isGameOver = true;
+        GlobalVars::is_game_over = true;
         smth_cnake->SetDie();
         *needed_char = 'G';
       } else {

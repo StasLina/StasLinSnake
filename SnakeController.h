@@ -12,8 +12,8 @@ public:
   orentation cur_orentation;
   struct SnakeSegment {
     SnakeSegment(){};
-    SnakeSegment(const ModelIndex &i, const pos &p) {
-      this->data = i;
+    SnakeSegment(const ModelIndex &index, const pos &p) {
+      this->data = index;
       this->cur_pos = p;
     }
     ModelIndex data;
@@ -26,7 +26,7 @@ public:
                                   const short &) override {
     auto smth_seg = body_snake.begin();
 
-    for (short i = 0; i != pos_x; ++i, ++smth_seg)
+    for (short cur_offset_elm = 0; cur_offset_elm != pos_x; ++cur_offset_elm, ++smth_seg)
       ;
     return smth_seg->data;
   };
@@ -34,8 +34,10 @@ public:
                      const short &) override {
     auto smth_seg = body_snake.begin();
 
-    for (short i = 0; i != pos_x; ++i, ++smth_seg)
-      ;
+    for (short cur_offset_elm = 0; cur_offset_elm != pos_x;
+         ++cur_offset_elm) {
+      ++smth_seg;
+    }
     smth_seg->data = smth_index;
   };
   unsigned short GetXSize() override { return body_snake.size(); }
@@ -45,14 +47,14 @@ public:
   void SetPosition(const short &pos_x, const pos &smth_pos) {
     auto smth_seg = body_snake.begin();
 
-    for (short i = 0; i != pos_x; ++i, ++smth_seg)
+    for (short cur_offset_elm = 0; cur_offset_elm != pos_x; ++cur_offset_elm, ++smth_seg)
       ;
     smth_seg->cur_pos = smth_pos;
   };
   const SnakeSegment &GetModelSegment(const short &pos_x) {
     auto smth_seg = body_snake.begin();
 
-    for (short i = 0; i != pos_x; ++i, ++smth_seg)
+    for (short cur_offset_elm = 0; cur_offset_elm != pos_x; ++cur_offset_elm, ++smth_seg)
       ;
     return *smth_seg;
   }

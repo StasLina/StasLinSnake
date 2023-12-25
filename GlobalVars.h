@@ -15,13 +15,11 @@ class GlobalVars {
   // private:
 
 public:
-  static bool isEated;
-
-public:
+  static bool is_eated;
   static short x_size, y_size;
-  static bool isGameOver;
+  static bool is_game_over;
   static const char eat;
-  static long speed_time;
+  static long time_of_update_speed;
   static int score;
   static bool proverka_empty(const char &elm, bool set_eat = true) {
     switch (elm) {
@@ -32,7 +30,7 @@ public:
     case '*': {
       if (set_eat) {
         if (elm == GlobalVars::eat) {
-          GlobalVars::isEated = true;
+          GlobalVars::is_eated = true;
           return true;
         }
       }
