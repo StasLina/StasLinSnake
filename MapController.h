@@ -76,7 +76,7 @@ public:
     smth_snake = *temp++;
     char ch;
 
-    while (GlobalVars::isGameOver == false) {
+    while (GlobalVars::is_game_over == false) {
       ch = _getch();
       switch (ch) {
       case 'w':
@@ -131,12 +131,12 @@ public:
 
 private:
   void time_move() {
-    while (GlobalVars::isGameOver == false) {
+    while (GlobalVars::is_game_over == false) {
       this->Move();
       Draw();
-      GlobalVars::isEated = false;
+      GlobalVars::is_eated = false;
       std::this_thread::sleep_for(
-       std::chrono::milliseconds(GlobalVars::speed_time));
+       std::chrono::milliseconds(GlobalVars::time_of_update_speed));
     }
   }
 
@@ -175,7 +175,7 @@ private:
     }
 
     if (GlobalVars::proverka_empty(*needed_char, false) == false) {
-      GlobalVars::isGameOver = true;
+      GlobalVars::is_game_over = true;
       *needed_char = 'G';
       smth_cnake->SetDie();
     } else {
@@ -206,7 +206,7 @@ private:
       }
 
       if (GlobalVars::proverka_empty(*needed_char, false) == false) {
-        GlobalVars::isGameOver = true;
+        GlobalVars::is_game_over = true;
         smth_cnake->SetDie();
         *needed_char = 'G';
       } else {

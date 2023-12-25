@@ -56,7 +56,7 @@ void SnakeModel::Move() {
   if (isNextEmpty) {
     all_move();
   } else {
-    GlobalVars::isGameOver = true;
+    GlobalVars::is_game_over = true;
   }
 }
 
@@ -82,7 +82,7 @@ void SnakeModel::all_move() {
       GlobalVars::score = score;
 
       if (GlobalVars::score % 2 == 0) {
-        GlobalVars::speed_time -= 100;
+        GlobalVars::time_of_update_speed -= 100;
       }
     }
     is_eat = false;

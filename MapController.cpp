@@ -10,7 +10,7 @@ void MapController::Move() {
   while (smth_snake != smth_snake_end) {
     (*smth_snake)->Move();
 
-    if (GlobalVars::isEated) {
+    if (GlobalVars::is_eated) {
       //++GlobalVars::score;
       auto snake_model = (*smth_snake)->GetModel();
       auto segment = snake_model->GetModelSegment(0);
@@ -41,7 +41,7 @@ void MapController::Draw() {
   // block_draw.lock();
   system("cls");
 
-  if (GlobalVars::isGameOver) {
+  if (GlobalVars::is_game_over) {
     std::cout << "Game Oveeeerrrrr press r to restart" << std::endl;
     return;
   }
@@ -70,7 +70,7 @@ void MapController::Draw() {
       res_map_str += fill_char;
     }
     std::string str_score =
-     "\speed: " + std::to_string(GlobalVars::speed_time);
+     "\speed: " + std::to_string(GlobalVars::time_of_update_speed);
     res_map_str += str_score;
     //++score_snake;
     res_map.push_back(res_map_str);
@@ -155,7 +155,7 @@ void MapController::Draw() {
   smth_row = res_map.begin();
   smth_row_end = res_map.end();
 
-  if (GlobalVars::isGameOver) {
+  if (GlobalVars::is_game_over) {
     smth_snake = list_snakes.begin();
 
     while (smth_snake != smth_snake_end) {

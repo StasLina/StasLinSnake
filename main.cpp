@@ -2,11 +2,11 @@
 
 #include <iostream>
 
-bool GlobalVars::isGameOver = false;
+bool GlobalVars::is_game_over = false;
 short GlobalVars::x_size = 20, GlobalVars::y_size = 10;
-bool GlobalVars::isEated = false;
+bool GlobalVars::is_eated = false;
 const char GlobalVars::eat = '*';
-long GlobalVars::speed_time = 500;
+long GlobalVars::time_of_update_speed = 500;
 int GlobalVars::score = 0;
 // очки скорость карта голова два типа
 int main() {
@@ -31,8 +31,8 @@ int main() {
       }
     }
     repeat = true;
-    GlobalVars::isGameOver = false;
-    GlobalVars::isEated = false;
-    GlobalVars::speed_time = 500;
+    GlobalVars::is_game_over = false;
+    GlobalVars::is_eated = false;
+    GlobalVars::time_of_update_speed = 500;
   }
 }
