@@ -128,12 +128,12 @@ void SnakeController::SetNewOrentation(
     }
   }
   new_oren = smth_or;
-  orent_changed = true;
+  did_orientation_change = true;
   return;
 }
 
 void SnakeController::Move() {
-  if (orent_changed) {
+  if (did_orientation_change) {
     model->cur_orentation = new_oren;
   }
   model->Move();

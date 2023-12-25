@@ -89,7 +89,7 @@ public:
 private:
   SnakeModel *model;
   SnakeModel::orentation new_oren;
-  bool orent_changed;
+  bool did_orientation_change;
   int snake_model_lenght = 1;
   bool snake_die = false;
 };
