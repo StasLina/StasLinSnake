@@ -120,11 +120,8 @@ void SnakeController::SetStartPos(int x, int y) {
 
 void SnakeController::SetNewOrentation(
  const SnakeModel::orentation &smth_or) {
-
   if (model->GetXSize() != 1) {
-
     if ((smth_or & 0xe) == (model->cur_orentation & 0xe)) {
-
       if ((smth_or & 0x1) != (model->cur_orentation & 0x1)) {
         return;
       }
@@ -136,7 +133,6 @@ void SnakeController::SetNewOrentation(
 }
 
 void SnakeController::Move() {
-
   if (orent_changed) {
     model->cur_orentation = new_oren;
   }
