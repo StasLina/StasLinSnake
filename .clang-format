@@ -1,6 +1,7 @@
 ---
 #BracedInitializerIndentWidth: 2
 InsertBraces: true
+KeepEmptyLinesAtTheStartOfBlocks: false
 InsertNewlineAtEOF: true
 AccessModifierOffset: -2
 AlignAfterOpenBracket: Align

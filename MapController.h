@@ -13,9 +13,7 @@ public:
     int max_col = 0;
 
     while (smth_elm != smth_elm_end) {
-
       if (*smth_elm == '\n') {
-
         if (max_col < cur_col) {
           cur_col = max_col;
         }
@@ -34,9 +32,7 @@ public:
     cur_row = 0;
 
     while (smth_elm != smth_elm_end) {
-
       if (*smth_elm == '\n') {
-
         if (max_col < cur_col) {
           cur_col = max_col;
         }
@@ -58,7 +54,6 @@ public:
                                 GlobalVars::y_size);
   }
   ~MapController() {
-
     if (cur_map_model) {
       delete cur_map_model;
     }
@@ -136,7 +131,6 @@ public:
 
 private:
   void time_move() {
-
     while (GlobalVars::isGameOver == false) {
       this->Move();
       Draw();

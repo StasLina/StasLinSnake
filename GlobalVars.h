@@ -30,9 +30,7 @@ public:
     case '#':
       return false;
     case '*': {
-
       if (set_eat) {
-
         if (elm == GlobalVars::eat) {
           GlobalVars::isEated = true;
           return true;

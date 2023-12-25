@@ -4,7 +4,6 @@
 #include <string>
 
 void MapController::Move() {
-
   auto smth_snake = list_snakes.begin();
   auto smth_snake_end = list_snakes.end();
 
@@ -160,7 +159,6 @@ void MapController::Draw() {
     smth_snake = list_snakes.begin();
 
     while (smth_snake != smth_snake_end) {
-
       if ((*smth_snake)->isLife()) {
         std::cout
          << "Змейка "
