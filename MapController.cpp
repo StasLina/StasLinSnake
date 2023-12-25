@@ -119,17 +119,20 @@ void MapController::Draw() {
     for (int cur_col_indent = 0; cur_col_indent != my_indent.left - 1; cur_col_indent++) {
       res_map_str += fill_char;
     }
+    
     res_map_str += '$';
 
     for (short cur_col = 0; cur_col != GlobalVars::x_size;
          ++cur_col) {
       res_map_str += '$';
     }
+    
     res_map_str += '$';
 
     for (int cur_col_indent = 1; cur_col_indent != my_indent.right; cur_col_indent++) {
       res_map_str += fill_char;
     }
+
     res_map.push_back(res_map_str);
   }
 
