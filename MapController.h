@@ -11,8 +11,11 @@ public:
     int cur_row = 0;
     int cur_col = 0;
     int max_col = 0;
+
     while (smth_elm != smth_elm_end) {
+
       if (*smth_elm == '\n') {
+
         if (max_col < cur_col) {
           cur_col = max_col;
         }
@@ -29,8 +32,11 @@ public:
     SetModelSize(GlobalVars::x_size, GlobalVars::y_size);
     cur_col = 0;
     cur_row = 0;
+
     while (smth_elm != smth_elm_end) {
+
       if (*smth_elm == '\n') {
+
         if (max_col < cur_col) {
           cur_col = max_col;
         }
@@ -52,6 +58,7 @@ public:
                                 GlobalVars::y_size);
   }
   ~MapController() {
+
     if (cur_map_model) {
       delete cur_map_model;
     }
@@ -73,6 +80,7 @@ public:
     smth_snake2 = *temp++;
     smth_snake = *temp++;
     char ch;
+
     while (GlobalVars::isGameOver == false) {
       ch = _getch();
       switch (ch) {
@@ -128,6 +136,7 @@ public:
 
 private:
   void time_move() {
+
     while (GlobalVars::isGameOver == false) {
       this->Move();
       Draw();
@@ -145,6 +154,7 @@ private:
     std::list<std::string>::iterator smth_row = res_map.begin();
     std::list<std::string>::iterator smth_row_end = res_map.end();
     // auto
+
     for (short i = 0; i != my_indent.top; ++i, ++smth_row)
       ;
     unsigned short i = 0;
@@ -152,20 +162,24 @@ private:
     short cur_x = 0;
     short cur_y = 0;
     auto nedded_row = smth_row;
+
     while (cur_y != segment.cur_pos.y) {
       ++nedded_row;
       ++cur_y;
     }
     auto needed_char = nedded_row->begin();
+
     while (cur_x != segment.cur_pos.x) {
       ++cur_x;
       ++needed_char;
     }
     cur_x = 0;
+
     while (cur_x != my_indent.left) {
       ++cur_x;
       ++needed_char;
     }
+
     if (GlobalVars::proverka_empty(*needed_char, false) == false) {
       GlobalVars::isGameOver = true;
       *needed_char = 'G';
@@ -173,25 +187,30 @@ private:
     } else {
       *needed_char = '#';
     }
+
     for (i = 1; i != x_size; ++i) {
       auto segment = smth_model->GetModelSegment(i);
       short cur_x = 0;
       short cur_y = 0;
       auto nedded_row = smth_row;
+
       while (cur_y != segment.cur_pos.y) {
         ++nedded_row;
         ++cur_y;
       }
       auto needed_char = nedded_row->begin();
+
       while (cur_x != segment.cur_pos.x) {
         ++cur_x;
         ++needed_char;
       }
       cur_x = 0;
+
       while (cur_x != my_indent.left) {
         ++cur_x;
         ++needed_char;
       }
+
       if (GlobalVars::proverka_empty(*needed_char, false) == false) {
         GlobalVars::isGameOver = true;
         smth_cnake->SetDie();
