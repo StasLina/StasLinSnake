@@ -11,19 +11,19 @@ const ModelIndex &StandartModel::GetModelIndex(short const &pos_x,
   }
 
   auto row = data.begin();
-  short n = 0;
+  short cur_offset = 0;
 
-  while (n != pos_y) {
+  while (cur_offset != pos_y) {
     ++row;
-    ++n;
+    ++cur_offset; 
   }
 
-  n = 0;
+  cur_offset = 0;
   auto col = row->begin();
 
-  while (n != pos_x) {
+  while (cur_offset != pos_x) {
     ++col;
-    ++n;
+    ++cur_offset;
   }
 
   return *col;

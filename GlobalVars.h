@@ -81,18 +81,18 @@ public:
   void SetModelIndex(const ModelIndex &smth_index, const short &pos_x,
                      const short &pos_y) override {
     auto row = data.begin();
-    short n = 0;
+    short cur_offset = 0;
 
-    while (n != pos_y) {
+    while (cur_offset != pos_y) {
       ++row;
-      ++n;
+      ++cur_offset;
     }
-    n = 0;
+    cur_offset = 0;
     auto col = row->begin();
 
-    while (n != pos_x) {
+    while (cur_offset != pos_x) {
       ++col;
-      ++n;
+      ++cur_offset;
     }
     *col = smth_index;
   };
@@ -101,12 +101,12 @@ public:
   void SetModelSize(unsigned short x, unsigned short y) override {
     data.resize(y);
     auto row = data.begin();
-    short n = 0;
+    short cur_offset = 0;
 
-    while (n != y) {
+    while (cur_offset != y) {
       row->resize(x);
       ++row;
-      ++n;
+      ++cur_offset;
     }
   };
 
