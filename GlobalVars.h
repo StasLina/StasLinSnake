@@ -6,10 +6,10 @@ class pos {
 public:
   pos(){};
   pos(const short &x1, const short &y1) {
-    x = x1;
-    y = y1;
+    cord_x = x1;
+    cord_y = y1;
   }
-  short x = 0, y = 0;
+  short cord_x = 0, cord_y = 0;
 };
 class GlobalVars {
   // private:
@@ -57,7 +57,7 @@ public:
 class AbstractModel {
 public:
   const ModelIndex &GetModelIndex(const pos &smth_pos) {
-    return GetModelIndex(smth_pos.x, smth_pos.y);
+    return GetModelIndex(smth_pos.cord_x, smth_pos.cord_y);
   }
   virtual const ModelIndex &GetModelIndex(short const &pos_x,
                                           const short &pos_y) {
@@ -68,7 +68,7 @@ public:
                              const short &pos_y){};
   virtual unsigned short GetXSize() { return 0; }
   virtual unsigned short GetYSize() { return 0; }
-  virtual void SetModelSize(unsigned short x, unsigned short y) {
+  virtual void SetModelSize(unsigned short cord_x, unsigned short cord_y) {
     return;
   };
 };
@@ -98,13 +98,13 @@ public:
   };
   unsigned short GetXSize() override { return data.begin()->size(); }
   unsigned short GetYSize() override { return data.size(); }
-  void SetModelSize(unsigned short x, unsigned short y) override {
-    data.resize(y);
+  void SetModelSize(unsigned short cord_x, unsigned short cord_y) override {
+    data.resize(cord_y);
     auto row = data.begin();
     short cur_offset = 0;
 
-    while (cur_offset != y) {
-      row->resize(x);
+    while (cur_offset != cord_y) {
+      row->resize(cord_x);
       ++row;
       ++cur_offset;
     }

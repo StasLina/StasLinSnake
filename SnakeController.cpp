@@ -12,41 +12,41 @@ void SnakeModel::Move() {
   new_pos = head.cur_pos;
   switch (cur_orentation) {
   case SnakeModel::bot:
-    --new_pos.y;
+    --new_pos.cord_y;
     smth_elm = map->GetModelIndex(new_pos).data;
 
     if (smth_elm == '?') {
-      new_pos.y = GlobalVars::y_size - 1;
+      new_pos.cord_y = GlobalVars::y_size - 1;
       smth_elm = map->GetModelIndex(new_pos).data;
     }
     is_next_empty |= check_empty(smth_elm);
     break;
   case SnakeModel::left:
-    --new_pos.x;
+    --new_pos.cord_x;
     smth_elm = map->GetModelIndex(new_pos).data;
 
     if (smth_elm == '?') {
-      new_pos.x = GlobalVars::x_size - 1;
+      new_pos.cord_x = GlobalVars::x_size - 1;
       smth_elm = map->GetModelIndex(new_pos).data;
     }
     is_next_empty |= check_empty(smth_elm);
     break;
   case SnakeModel::top:
-    ++new_pos.y;
+    ++new_pos.cord_y;
     smth_elm = map->GetModelIndex(new_pos).data;
 
     if (smth_elm == '?') {
-      new_pos.y = 0;
+      new_pos.cord_y = 0;
       smth_elm = map->GetModelIndex(new_pos).data;
     }
     is_next_empty |= check_empty(smth_elm);
     break;
   case SnakeModel::right:
-    ++new_pos.x;
+    ++new_pos.cord_x;
     smth_elm = map->GetModelIndex(new_pos).data;
 
     if (smth_elm == '?') {
-      new_pos.x = 0;
+      new_pos.cord_x = 0;
       smth_elm = map->GetModelIndex(new_pos).data;
     }
     is_next_empty |= check_empty(smth_elm);
@@ -107,14 +107,14 @@ void SnakeController::SetStartPos() {
   model->SetModelIndex('@', 0, 0);
   pos
    start_pos; // = { GlobalVars::x_size / 2, GlobalVars::y_size / 2 };
-  start_pos.x = GlobalVars::x_size / 2;
-  start_pos.y = GlobalVars::y_size / 2;
+  start_pos.cord_x = GlobalVars::x_size / 2;
+  start_pos.cord_y = GlobalVars::y_size / 2;
   model->SetPosition(0, start_pos);
 }
-void SnakeController::SetStartPos(int x, int y) {
+void SnakeController::SetStartPos(int cord_x, int cord_y) {
   pos start_pos;
-  start_pos.x = x;
-  start_pos.y = y;
+  start_pos.cord_x = cord_x;
+  start_pos.cord_y = cord_y;
   model->SetPosition(0, start_pos);
 }
 

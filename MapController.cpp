@@ -14,8 +14,8 @@ void MapController::Move() {
       //++GlobalVars::score;
       auto snake_model = (*smth_snake)->GetModel();
       auto segment = snake_model->GetModelSegment(0);
-      cur_map_model->SetModelIndex(' ', segment.cur_pos.x,
-                                   segment.cur_pos.y);
+      cur_map_model->SetModelIndex(' ', segment.cur_pos.cord_x,
+                                   segment.cur_pos.cord_y);
       addEat();
     }
     ++smth_snake;
@@ -24,14 +24,14 @@ void MapController::Move() {
 // добавляем еду на карту
 void MapController::addEat() {
   bool is_not_empty = true;
-  short x, y;
+  short cord_x, cord_y;
 
   while (is_not_empty) {
-    x = rand() % GlobalVars::x_size;
-    y = rand() % GlobalVars::y_size;
+    cord_x = rand() % GlobalVars::x_size;
+    cord_y = rand() % GlobalVars::y_size;
 
-    if (cur_map_model->GetModelIndex(x, y).data == ' ') {
-      cur_map_model->SetModelIndex(GlobalVars::eat, x, y);
+    if (cur_map_model->GetModelIndex(cord_x, cord_y).data == ' ') {
+      cur_map_model->SetModelIndex(GlobalVars::eat, cord_x, cord_y);
       is_not_empty = false;
     }
   }

@@ -41,8 +41,8 @@ public:
     smth_seg->data = smth_index;
   };
   unsigned short GetXSize() override { return snake_body.size(); }
-  void SetModelSize(unsigned short x, unsigned short) override {
-    snake_body.resize(x);
+  void SetModelSize(unsigned short cord_x, unsigned short) override {
+    snake_body.resize(cord_x);
   };
   void SetPosition(const short &pos_x, const pos &smth_pos) {
     auto smth_seg = snake_body.begin();
@@ -78,7 +78,7 @@ public:
   void SetMap(AbstractModel *smth_model);
   void SetBodyChar(const char &ch);
   void SetStartPos();
-  void SetStartPos(int x, int y);
+  void SetStartPos(int cord_x, int cord_y);
   void SetNewOrentation(const SnakeModel::orentation &smth_or);
   void Move();
   size_t GetScore() { return model->GetScore(); };

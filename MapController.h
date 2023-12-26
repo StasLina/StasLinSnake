@@ -157,13 +157,13 @@ private:
     short cur_y = 0;
     auto nedded_row = smth_row;
 
-    while (cur_y != segment.cur_pos.y) {
+    while (cur_y != segment.cur_pos.cord_y) {
       ++nedded_row;
       ++cur_y;
     }
     auto needed_char = nedded_row->begin();
 
-    while (cur_x != segment.cur_pos.x) {
+    while (cur_x != segment.cur_pos.cord_x) {
       ++cur_x;
       ++needed_char;
     }
@@ -188,13 +188,13 @@ private:
       short cur_y = 0;
       auto nedded_row = smth_row;
 
-      while (cur_y != segment.cur_pos.y) {
+      while (cur_y != segment.cur_pos.cord_y) {
         ++nedded_row;
         ++cur_y;
       }
       auto needed_char = nedded_row->begin();
 
-      while (cur_x != segment.cur_pos.x) {
+      while (cur_x != segment.cur_pos.cord_x) {
         ++cur_x;
         ++needed_char;
       }
