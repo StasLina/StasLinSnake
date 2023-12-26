@@ -161,12 +161,14 @@ private:
       ++nedded_row;
       ++cur_y;
     }
+
     auto needed_char = nedded_row->begin();
 
     while (cur_x != segment.cur_pos.cord_x) {
       ++cur_x;
       ++needed_char;
     }
+
     cur_x = 0;
 
     while (cur_x != my_indent.left) {
@@ -192,6 +194,7 @@ private:
         ++nedded_row;
         ++cur_y;
       }
+
       auto needed_char = nedded_row->begin();
 
       while (cur_x != segment.cur_pos.cord_x) {

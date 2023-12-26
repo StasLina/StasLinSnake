@@ -19,6 +19,7 @@ void SnakeModel::Move() {
       new_pos.cord_y = GlobalVars::y_size - 1;
       smth_elm = map->GetModelIndex(new_pos).data;
     }
+
     is_next_empty |= check_empty(smth_elm);
     break;
   case SnakeModel::left:
@@ -29,6 +30,7 @@ void SnakeModel::Move() {
       new_pos.cord_x = GlobalVars::x_size - 1;
       smth_elm = map->GetModelIndex(new_pos).data;
     }
+    
     is_next_empty |= check_empty(smth_elm);
     break;
   case SnakeModel::top:
@@ -39,6 +41,7 @@ void SnakeModel::Move() {
       new_pos.cord_y = 0;
       smth_elm = map->GetModelIndex(new_pos).data;
     }
+    
     is_next_empty |= check_empty(smth_elm);
     break;
   case SnakeModel::right:
@@ -49,6 +52,7 @@ void SnakeModel::Move() {
       new_pos.cord_x = 0;
       smth_elm = map->GetModelIndex(new_pos).data;
     }
+    
     is_next_empty |= check_empty(smth_elm);
     break;
   }
@@ -85,6 +89,7 @@ void SnakeModel::all_move() {
         GlobalVars::time_of_update_speed -= 100;
       }
     }
+    
     is_eat = false;
   } else {
     snake_body.pop_back();
@@ -127,6 +132,7 @@ void SnakeController::SetNewOrentation(
       }
     }
   }
+
   new_oren = smth_or;
   did_orientation_change = true;
   return;
@@ -136,5 +142,6 @@ void SnakeController::Move() {
   if (did_orientation_change) {
     model->cur_orentation = new_oren;
   }
+
   model->Move();
 }
