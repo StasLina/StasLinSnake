@@ -62,11 +62,11 @@ public:
     this->cur_map_model = smth_model;
   }
   void Move();
-  void addEat();
+  void AddEat();
   void Draw();
   void Run() {
-    addEat();
-    addEat();
+    AddEat();
+    AddEat();
     std::thread th(&MapController::time_move, this);
     th.detach();
     SnakeController *smth_snake = 0, *smth_snake2 = 0;
@@ -201,6 +201,7 @@ private:
         ++cur_x;
         ++needed_char;
       }
+
       cur_x = 0;
 
       while (cur_x != my_indent.left) {

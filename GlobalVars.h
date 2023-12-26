@@ -87,6 +87,7 @@ public:
       ++row;
       ++cur_offset;
     }
+
     cur_offset = 0;
     auto col = row->begin();
 

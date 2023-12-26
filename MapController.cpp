@@ -16,13 +16,13 @@ void MapController::Move() {
       auto segment = snake_model->GetModelSegment(0);
       cur_map_model->SetModelIndex(' ', segment.cur_pos.cord_x,
                                    segment.cur_pos.cord_y);
-      addEat();
+      AddEat();
     }
     ++smth_snake;
   }
 }
 // добавляем еду на карту
-void MapController::addEat() {
+void MapController::AddEat() {
   bool is_not_empty = true;
   short cord_x, cord_y;
 
@@ -136,15 +136,12 @@ void MapController::Draw() {
     res_map.push_back(res_map_str);
   }
 
-  // auto smth_model=smth_snake->GetModel();
-
-  // auto x_size=smth_model->GetXSize();
   std::list<std::string>::iterator smth_row = res_map.begin();
   std::list<std::string>::iterator smth_row_end = res_map.end();
-  // auto
 
-  for (short cur_row_indent = 0; cur_row_indent != my_indent.top; ++cur_row_indent, ++smth_row)
-    ;
+  for (short cur_row_indent = 0; cur_row_indent != my_indent.top; ++cur_row_indent) {
+    ++smth_row;
+  }
 
   // draw snake
   auto smth_snake = list_snakes.begin();
